@@ -13,14 +13,12 @@ export const authOptions = {
       authorization: {
         params: {
           scope: 'read:user',
-        }
+        },
       }
-    }),
+    })
   ],
   callbacks: {
-    async signIn({ user, account, profile }) {
-      const { email } = user
-
+    async signIn({ user, account, profile, email, credentials }) {
       try {
         await fauna.query(
           q.If(
